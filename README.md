@@ -1,2 +1,2 @@
 # filterService
-SOAP and REST webservices and client 
+SOAP and REST webservices with client 
