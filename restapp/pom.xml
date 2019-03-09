@@ -25,6 +25,23 @@
 
     <build>
         <plugins>
+            <!--*************************************************-->
+            <!-- Deploy to Tomcat in App Service Linux           -->
+            <!--*************************************************-->
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>1.5.3</version>
+                <configuration>
+                    <!-- App information -->
+                    <resourceGroup>twitterFilterService</resourceGroup>
+                    <appName>twitterFilterService</appName>
+                    <region>Central US</region>
+
+                    <!-- Java Runtime Stack for App on Linux-->
+                    <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

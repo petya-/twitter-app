@@ -61,7 +61,10 @@ public class VeggieFilter extends HttpServlet {
             
             //1: Take a "text/plain" Content-Type body (the header not required, but if included, needs to be text/plain)
             //TODO 2: Respond with JSON format text?
-            //TODO 3: status codes
+            //TODO 3: The Response header should also state that the response type is JSON
+            //TODO 4: status codes
+            
+            //TODO 5: Have a method that returns the names used for each available filter.
             
             //Check 'Content-Type' header
             String contentType = request.getContentType();
