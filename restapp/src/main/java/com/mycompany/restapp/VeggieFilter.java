@@ -5,6 +5,10 @@
  */
 package com.mycompany.restapp;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -28,6 +32,7 @@ public class VeggieFilter extends HttpServlet {
     private Set<String> bulbAndStemVegetables;
     private Set<String> allVegetables;
     private Map<String, Set<String>> filters;
+    private Gson gson;
 
     @Override
     public void init() throws ServletException {
@@ -49,12 +54,14 @@ public class VeggieFilter extends HttpServlet {
         allVegetables.addAll(Arrays.asList("Cucumber", "Carrot", "Potato",
                 "Onion", "Celery", "Yam", "Lettuce", "Radish", "Leek", "Beet",
                 "Pea", "Peanut", "Soybean", "Lentil"));
-        
+
         //Set up filter map
         filters = new HashMap();
         filters.put("Root", rootVegetables);
         filters.put("Bulb", bulbAndStemVegetables);
         filters.put("All", allVegetables);
+
+        gson = new Gson();
     }
 
     /**
@@ -126,7 +133,18 @@ public class VeggieFilter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+
+        //Respond with the filter categories in JSON format
+        JsonObject filtersAsJSON = new JsonObject();
+        filtersAsJSON.add("filters", this.gson.toJsonTree(filters));
+        
+        //Set headers
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        out.print(filtersAsJSON);
+        out.flush();
     }
 
     /**
@@ -140,7 +158,7 @@ public class VeggieFilter extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
