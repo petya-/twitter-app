@@ -8,6 +8,8 @@ package com.mycompany.restapp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -22,14 +24,37 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class VeggieFilter extends HttpServlet {
 
-    private Set<String> vegetableNames;
+    private Set<String> rootVegetables;
+    private Set<String> bulbAndStemVegetables;
+    private Set<String> allVegetables;
+    private Map<String, Set<String>> filters;
 
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
-        vegetableNames = new TreeSet(String.CASE_INSENSITIVE_ORDER);
-        vegetableNames.addAll(Arrays.asList("Cucumber", "Carrot", "Potato",
-                "Onion", "Celery", "Jam", "Lettuce", "Radish", "Leek", "Beet"));
+        //Root vegetables
+        rootVegetables = new TreeSet(String.CASE_INSENSITIVE_ORDER);
+        rootVegetables.addAll(Arrays.asList("Beetroot", "Carrot", "Ginger root",
+                "Parsnip", "Potato", "Radish", "Turnip", "Yam"));
+
+        //Bulb and stem vegetables
+        bulbAndStemVegetables = new TreeSet(String.CASE_INSENSITIVE_ORDER);
+        bulbAndStemVegetables.addAll(Arrays.asList("Asparagus", "Celery",
+                "Garlic", "Lemongrass", "Leek", "Onion"));
+
+        //All vegetables
+        allVegetables = new TreeSet(String.CASE_INSENSITIVE_ORDER);
+        allVegetables.addAll(rootVegetables);
+        allVegetables.addAll(bulbAndStemVegetables);
+        allVegetables.addAll(Arrays.asList("Cucumber", "Carrot", "Potato",
+                "Onion", "Celery", "Yam", "Lettuce", "Radish", "Leek", "Beet",
+                "Pea", "Peanut", "Soybean", "Lentil"));
+        
+        //Set up filter map
+        filters = new HashMap();
+        filters.put("Root", rootVegetables);
+        filters.put("Bulb", bulbAndStemVegetables);
+        filters.put("All", allVegetables);
     }
 
     /**
@@ -56,16 +81,11 @@ public class VeggieFilter extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 
-            
-            
-            
             //1: Take a "text/plain" Content-Type body (the header not required, but if included, needs to be text/plain)
             //TODO 2: Respond with JSON format text?
             //TODO 3: The Response header should also state that the response type is JSON
             //TODO 4: status codes
-            
             //TODO 5: Have a method that returns the names used for each available filter.
-            
             //Check 'Content-Type' header
             String contentType = request.getContentType();
             if (contentType != null && contentType.contains("text/plain") == false) {
@@ -82,9 +102,9 @@ public class VeggieFilter extends HttpServlet {
                 while (Character.isLetter(s.charAt(s.length() - 1)) == false) {
                     s = s.substring(0, s.length() - 1);
                 }
-                
+
                 //check if word is filtered
-                if (vegetableNames.contains(s)) {
+                if (allVegetables.contains(s)) {
                     //TODO: Return result for message "violating" the filter.
                 } else {
                     //TODO: Return whatever result for the message "passing" the filter.
