@@ -57,9 +57,9 @@ public class VeggieFilter extends HttpServlet {
 
         //Set up filter map
         filters = new HashMap();
-        filters.put("Root", rootVegetables);
-        filters.put("Bulb", bulbAndStemVegetables);
-        filters.put("All", allVegetables);
+        filters.put("root", rootVegetables);
+        filters.put("bulb", bulbAndStemVegetables);
+        filters.put("all", allVegetables);
 
         gson = new Gson();
     }
