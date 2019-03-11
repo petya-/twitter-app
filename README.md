@@ -30,10 +30,14 @@ This should open a new page in the browser, running on port 3000.
 
 ## Installing the SOAP WebService
 
-Explain how to run the application
+Using jax-WS you should be able to simply create a web application client and then 
+implement the WSDL from here: (http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
+Depending on your IDE you should be able to simply drag and drop the 
+countWords() method into your class source code.
 
 ```
-Give an example
+countWords("This sentence has five words");
+This should return an int with the value of '5'
 ```
 
 Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
