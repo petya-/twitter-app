@@ -56,9 +56,9 @@ public class VeggieFilter extends HttpServlet {
 
         //Set up filter map
         filters = new TreeMap(String.CASE_INSENSITIVE_ORDER);
-        filters.put("Root vegetables", rootVegetables);
-        filters.put("Bulb vegetables", bulbAndStemVegetables);
-        filters.put("All vegetables", allVegetables);
+        filters.put("root", rootVegetables);
+        filters.put("bulb", bulbAndStemVegetables);
+        filters.put("all", allVegetables);
 
         gson = new Gson();
     }
@@ -105,8 +105,8 @@ public class VeggieFilter extends HttpServlet {
         Set<String> selectedFilter;
         String filterArg = request.getParameter("filter");
         if (filterArg == null || filters.keySet().contains(filterArg) == false) {
-            selectedFilter = filters.get("All vegetables");
-            filterName = "All vegetables";
+            selectedFilter = filters.get("all");
+            filterName = "all";
         } else {
             selectedFilter = filters.get(filterArg);
             filterName = filterArg.toLowerCase();
@@ -120,7 +120,15 @@ public class VeggieFilter extends HttpServlet {
         }
 
         //3: Read and censor the message body
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), request.getCharacterEncoding()));
+        String charEncoding = request.getCharacterEncoding();
+        InputStreamReader inStreamReader;
+        if (charEncoding == null) {
+            inStreamReader = new InputStreamReader(request.getInputStream());
+        } else {
+            inStreamReader = new InputStreamReader(request.getInputStream(), request.getCharacterEncoding());
+        }
+        
+        BufferedReader br = new BufferedReader(inStreamReader);
         StringBuilder filteredMessage = new StringBuilder();
         String tempLine;
         //censor message
