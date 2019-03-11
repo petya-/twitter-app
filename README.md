@@ -43,11 +43,10 @@ This should return an int with the value of '5'
 Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
 
 
-## Installing the REST WebService
+## Using the REST WebService
 
-Explain how to run the application
-
-Filtering a message:
+To filter a message, send the service a HTTP POST request with a message in the body as plain text.
+Details:
 ```
 Request type: POST 
 URL: https://twitterfilterservice.azurewebsites.net/VeggieFilter
