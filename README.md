@@ -48,7 +48,22 @@ Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/Word
 Explain how to run the application
 
 ```
-Give an example
+Filtering a message:
+Request type: POST 
+URL: https://twitterfilterservice.azurewebsites.net/VeggieFilter
+Accepted Content-Type: "plain/text"
+Query string parameter options: filter=[root/bulb/all]
+
+Response Content-Type: "application/json"
+Response JSON elements:
+  "filter" = name of the applied filter.
+  "censored" = true/false based on whether or not the message had words censored.
+  "filteredMessage" = the message after being passed through the vegetable filter.
+
+cURL HTTP-request example:
+curl -X POST https://twitterfilterservice.azurewebsites.net/VeggieFilter?filter=bulb 
+-H "Content-Type: text/plain" 
+-d "Just wanted to let you guys know that I just ate celery!" -i
 ```
 
 Service can be found on [Azure](https://twitterfilterservice.azurewebsites.net/VeggieFilter)
