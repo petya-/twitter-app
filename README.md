@@ -36,6 +36,9 @@ Explain how to run the application
 Give an example
 ```
 
+Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
+
+
 ### Installing the REST WebService
 
 Explain how to run the application
@@ -44,12 +47,13 @@ Explain how to run the application
 Give an example
 ```
 
+Service can be found on [Azure](https://twitterfilterservice.azurewebsites.net/VeggieFilter)
 
 ## Built With
 
 * [React](https://reactjs.org/) - The web framework used for the client
 * [Maven](https://maven.apache.org/) - Dependency Management
-* []
+
 
 ## Authors
 
