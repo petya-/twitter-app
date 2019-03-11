@@ -46,6 +46,7 @@ Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/Word
 ## Using the REST WebService
 
 To filter a message, send the service a HTTP POST request with a message in the body as plain text.
+
 Details:
 ```
 Request type: POST 
