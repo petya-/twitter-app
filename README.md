@@ -1,12 +1,5 @@
 # Twitter APP
-The twitter app is a single-page application, consuming a SOAP and REST webservices responsible for counting words in a posts and censoring.
-
-
-authors’	details
-• brief	summary	of	application	development	and	implementation,	including	both	business	and	technical
-features
-• installation	instructions
-
+The twitter app is a single-page application, consuming a SOAP and REST webservices responsible for counting words in a post and censoring.
 
 ## Getting Started
 
@@ -58,8 +51,6 @@ Give an example
 * [Maven](https://maven.apache.org/) - Dependency Management
 * []
 
-
-
 ## Authors
 
 * **Petya Buchkova** - *Initial work* - [petya-](https://github.com/petya-)
@@ -69,9 +60,3 @@ Give an example
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
