@@ -191,7 +191,7 @@ textarea._twemoji_input{
   border-radius: 0 0 0 25px;
   min-height: 50px;
   height: 50px;
-  width: 378px;
+  width: 365px;
   border-top: none;
   margin-top: 2px;
   padding-left: 16px;
@@ -205,7 +205,7 @@ textarea._twemoji_input{
 
 ._twemoji_textarea, input {
   min-height: 25px;
-  width: 378px;
+  width: 365px;
 	border: solid 1px rgba(255,255,255,0.8);
 	padding: 10px 25px;
 	color: #002E40;
@@ -274,7 +274,7 @@ button:active{
 	transform: translateY(1px);
 }
 
-select {
+.select {
   /* -webkit-appearance: none;
   -webkit-border-radius: 0px; */
 	border: none;
@@ -313,6 +313,7 @@ ul.messages li {
 	padding: 10px 25px;
 	list-style-type: none;
 	margin: 15px 0;
+  text-align: left;
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -325,6 +326,12 @@ ul.messages li h4 {
 	font-size: 16pt;
 }
 
+ul.messages li h5 {
+	text-align: right;
+	color: #002E40;
+	font-size: 16pt;
+}
+
 ul.messages li p{
 	font-size: 10pt;
 	margin-bottom: 0;
@@ -333,3 +340,12 @@ ul.messages li p{
 .emoji{
   width: 24px;
 }
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
