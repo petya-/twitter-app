@@ -1,12 +1,5 @@
 # Twitter APP
-The twitter app is a single-page application, consuming a SOAP and REST webservices responsible for counting words in a posts and censoring.
-
-
-authors’	details
-• brief	summary	of	application	development	and	implementation,	including	both	business	and	technical
-features
-• installation	instructions
-
+The twitter app is a single-page application, consuming a SOAP and REST webservices responsible for counting words in a post and censoring.
 
 ## Getting Started
 
@@ -43,6 +36,9 @@ Explain how to run the application
 Give an example
 ```
 
+Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
+
+
 ### Installing the REST WebService
 
 Explain how to run the application
@@ -51,13 +47,12 @@ Explain how to run the application
 Give an example
 ```
 
+Service can be found on [Azure](https://twitterfilterservice.azurewebsites.net/VeggieFilter)
 
 ## Built With
 
 * [React](https://reactjs.org/) - The web framework used for the client
 * [Maven](https://maven.apache.org/) - Dependency Management
-* []
-
 
 
 ## Authors
@@ -69,9 +64,3 @@ Give an example
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
