@@ -138,6 +138,9 @@ public class VeggieFilter extends HttpServlet {
                 if (tempLine.contains(vegetable)) {
                     tempLine = tempLine.replaceAll(vegetable, "****");
                     censored = true;
+                } else if (tempLine.contains(vegetable.toLowerCase())) {
+                    tempLine = tempLine.replaceAll(vegetable.toLowerCase(), "****");
+                    censored = true;
                 }
             }
 
