@@ -56,9 +56,9 @@ public class VeggieFilter extends HttpServlet {
 
         //Set up filter map
         filters = new TreeMap(String.CASE_INSENSITIVE_ORDER);
-        filters.put("root", rootVegetables);
-        filters.put("bulb", bulbAndStemVegetables);
-        filters.put("all", allVegetables);
+        filters.put("Root vegetables", rootVegetables);
+        filters.put("Bulb vegetables", bulbAndStemVegetables);
+        filters.put("All vegetables", allVegetables);
 
         gson = new Gson();
     }
@@ -77,7 +77,7 @@ public class VeggieFilter extends HttpServlet {
             throws ServletException, IOException {
         //Respond with the filter categories in JSON format
         JsonObject filtersAsJSON = new JsonObject();
-        filtersAsJSON.add("filters", this.gson.toJsonTree(filters));
+        filtersAsJSON.add("filters", this.gson.toJsonTree(filters.keySet()));
 
         //Set headers
         response.setContentType("application/json");
@@ -105,8 +105,8 @@ public class VeggieFilter extends HttpServlet {
         Set<String> selectedFilter;
         String filterArg = request.getParameter("filter");
         if (filterArg == null || filters.keySet().contains(filterArg) == false) {
-            selectedFilter = filters.get("all");
-            filterName = "all";
+            selectedFilter = filters.get("All vegetables");
+            filterName = "All vegetables";
         } else {
             selectedFilter = filters.get(filterArg);
             filterName = filterArg.toLowerCase();
