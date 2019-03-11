@@ -61,7 +61,7 @@ class TwitterPost extends Component {
   }
 
   async censorMessage() {
-    console.log(this.state.filter)
+
     return await axios.post(
       `https://twitterfilterservice.azurewebsites.net/VeggieFilter?filter=${this.state.filter}`,
       this.state.text,
@@ -73,46 +73,52 @@ class TwitterPost extends Component {
     );
   }
 
+  async countWords() {
+    const xmls=`
+    <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+      <Body>
+        <CountWords xmlns="http://tool/">
+          <fullText xmlns="">${this.state.text}</fullText>
+        </CountWords>
+      </Body>
+    </Envelope>`;
+
+    const res = await axios.post(`http://wordcounterservice.azurewebsites.net:80/WordCounter?wsdl`,
+      xmls,
+      {
+        headers:
+          {
+            'Content-Type': 'text/xml',
+            SOAPAction: 'http://wordcounterservice.azurewebsites.net:80/WordCounter?wsdl'
+          }
+    });
+
+    var xml = new DOMParser().parseFromString(res.data, "text/xml");
+    return xml.getElementsByTagName("return")[0].childNodes[0].nodeValue;
+
+  }
+
 
   async submitPost(event) {
+
     event.preventDefault();
 
-    const xmls=`<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
-    <Body>
-      <CountWords xmlns="http://tool/">
-        <fullText xmlns="">${this.state.text}</fullText>
-      </CountWords>
-    </Body>
-  </Envelope>`;
+    const censoredMessage = await this.censorMessage();
+    const words = await this.countWords();
 
-    axios.post(`http://wordcounterservice.azurewebsites.net:80/WordCounter?wsdl`,
-    xmls,
-    {headers:
-    {
-    'Content-Type': 'text/xml',
-    SOAPAction: 'http://wordcounterservice.azurewebsites.net:80/WordCounter?wsdl'
-    }
-    }).then(async res=>{
-      var xml = new DOMParser().parseFromString(res.data, "text/xml");
-      const words = xml.getElementsByTagName("return")[0].childNodes[0].nodeValue;
-
-      const censoredMessage = await this.censorMessage();
-
-      this.state.twitterPosts.unshift({
+    this.state.twitterPosts.unshift({
       text: censoredMessage.data.filteredMessage,
       author: this.state.author,
       filter: this.state.filter,
       words: words
-      });
+    });
 
-      // reset form fields
-      this.setState({
-      text:'',
-      author:'',
-      filter: 'Choose filter'
-      });
-
-    }).catch(err=>{console.log(err)});
+    // reset form fields
+    this.setState({
+    text:'',
+    author:'',
+    filter: 'Choose filter'
+    });
 
   }
 
