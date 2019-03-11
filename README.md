@@ -5,14 +5,14 @@ The twitter app is a single-page application, consuming a SOAP and REST webservi
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Prerequisites
 
 You should have Node.js installed on your machine
 ```
 https://nodejs.org/en/download/
 ```
 
-### Installing the client application
+## Installing the Twitter App
 
 Go to the client folder and install the dependencies
 
@@ -39,7 +39,7 @@ Give an example
 Service can be found on [Azure](http://wordcounterservice.azurewebsites.net/WordCounter?wsdl)
 
 
-### Installing the REST WebService
+## Installing the REST WebService
 
 Explain how to run the application
 
