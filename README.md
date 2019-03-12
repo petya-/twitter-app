@@ -66,9 +66,7 @@ Response JSON elements:
 ```
 cURL HTTP-request example:
 ```
-curl -X POST https://twitterfilterservice.azurewebsites.net/VeggieFilter?filter=bulb 
--H "Content-Type: text/plain" 
--d "Just wanted to let you guys know that I just ate celery!" -i
+curl -X POST https://twitterfilterservice.azurewebsites.net/VeggieFilter?filter=bulb -H "Content-Type: text/plain" -d "Just wanted to let you guys know that I just ate celery!" -i
 ```
 
 Service can be found on [Azure](https://twitterfilterservice.azurewebsites.net/VeggieFilter)
