@@ -51,8 +51,8 @@ Details:
 ```
 Request type: POST 
 URL: https://twitterfilterservice.azurewebsites.net/VeggieFilter
-Accepted Content-Type: "plain/text"
 Query string parameter options: filter=[root/bulb/all]
+Accepted Content-Type: "plain/text"
 ```
 Response Content-Type: 
 ```
